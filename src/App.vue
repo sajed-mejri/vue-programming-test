@@ -1,17 +1,19 @@
 <template>
-  <Spreadsheet />
+  <!-- <Spreadsheet /> -->
+  <JViewer />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Spreadsheet from "./components/Spreadsheet.vue";
-// import test from "./components/test.vue";
+// import Spreadsheet from "./components/Spreadsheet.vue";
+import JViewer from "./components/Jsonviewer.vue";
 
 export default defineComponent({
   name: "App",
 
   components: {
-    Spreadsheet,
+    // Spreadsheet,
+    JViewer,
     // test,
   },
 
