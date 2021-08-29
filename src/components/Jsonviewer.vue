@@ -10,8 +10,11 @@
       />
     </div>
     <br />
-    The loading of {{ fileName }} doesn't work propery.. I could fix it but I
-    don't want to loose much time.
+    <p v-if="fileName">
+      The loading of <strong>{{ fileName }}</strong> doesn't work propery.. I
+      could fix it but I don't want to loose much time.. It still works on
+      static yey.. :'c
+    </p>
     <json-viewer :value="jsonData" copyable boxed sort v-bind="jsonData" />
   </v-container>
 </template>
