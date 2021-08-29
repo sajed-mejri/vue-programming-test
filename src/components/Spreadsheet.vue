@@ -77,12 +77,12 @@ export default defineComponent({
     tabClicked(elem) {
       this.rows.push(Comp);
       this.cols.push(Comp2);
-      console.log("lol");
+      console.log("tab clicked");
       elem.focus();
     },
     enterClicked(elem) {
       this.desserts.push({ id: this.counter, name: "", calories: "" });
-      console.log("lol");
+      console.log("enter clicked");
       this.counter++;
       elem.focus();
     },
