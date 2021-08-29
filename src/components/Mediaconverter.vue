@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <v-container class="wrapper">
-      <video class="video" :src="video" controls />
+      <audio class="video" :src="audio" controls />
       <br />
       <button @click="transcode" class="button">
         Start
@@ -31,12 +31,22 @@ export default defineComponent({
       message.value = "Loading ffmeg-core.js";
       await ffmpeg.load();
       message.value = "Start transcoding";
-      ffmpeg.FS("writeFile", "test.avi", await fetchFile(file));
-      await ffmpeg.run("-i", "test.avi", "test.mp4");
+      ffmpeg.FS("writeFile", "input.mp4", await fetchFile(file));
+      // These should be the options you mentioned, it should work.
+      await ffmpeg.run(
+        "-vn",
+        "-ac",
+        "1",
+        "-codec:a",
+        "pcm_s16le",
+        "-i",
+        "input.mp4",
+        "output.wav"
+      );
       message.value = "Complete transcoding";
-      const data = ffmpeg.FS("readFile", "test.mp4");
-      video.value = URL.createObjectURL(
-        new Blob([data.buffer], { type: "video/mp4" })
+      const data = ffmpeg.FS("readFile", "output.wav");
+      audio.value = URL.createObjectURL(
+        new Blob([data.buffer], { type: "audio/wav" })
       );
     }
     return {

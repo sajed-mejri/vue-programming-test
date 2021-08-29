@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import vuetify from "./plugins/vuetify";
 import App from "./App.vue";
+import router from "./router";
 import JsonViewer from "vue3-json-viewer";
 
 // import "bootstrap";
@@ -9,4 +10,7 @@ import JsonViewer from "vue3-json-viewer";
 createApp(App)
   .use(JsonViewer)
   .use(vuetify)
+  .use(router)
   .mount("#app");
+
+const routes = [];
